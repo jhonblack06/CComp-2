@@ -2,80 +2,45 @@
 #include <fstream>
 #include <string>
 
-void encrytion_monoaplhabetic_cipher(std::string &txt, int Private_key =  21) // default 21, decipher key 61
-{
-
-    char encrypt = txt[0];
-    for( int i = 0; encrypt != '\0'; encrypt = txt[++i])
-    {
-        int tmp= (encrypt*Private_key)%256;
-        txt[i] = tmp;
-    }
-
-    return;
+int mod(int a,int b){
+	int c;
+	if (a>=0){
+		c=a%b;
+	}else{
+		c=-a%b;
+		c=b-c;
+	}
+	return c;
 }
 
-void decryption_monoaplhabetic_cipher(std::string &txt, int Private_key =  61) // default 21, decipher key 61
-{
-    char encrypt = txt[0];
-    for( int i = 0; encrypt != '\0'; encrypt = txt[++i])
-    {
-        int tmp= (encrypt*Private_key)%256; // int tmp= (encrypt*Private_key + 4)%256; dende 4 es una constante e desplazamiento
-        txt[i] = tmp;
-    }
-
-    return;
+int gcd(int a,int b){
+	if(!b) {
+		return a;
+	}else{
+		return gcd(b,(mod(a,b)));
+	}
 }
 
-void encrypt_this (std::string &txt, int key = 331) //XOR method  // 42 as default key
-{
-    char encrypt = txt[0];
-    for(int i = 0; encrypt != '\0';encrypt = txt[++i])
-    {
-        int tmp = encrypt/1;
-        txt[i] = tmp^key;
-    }
-    //std::cout << txt << std::endl;
-    return;
+int inversa(int a,int b){
+	int pi_2=0;
+	int pi_1=1;
+	int pi=1, qi_2,temp,temp1;
+	int alw=b;
+	if (gcd(a,b)!=1)return -1;
+	while(a!=1){
+		//std::cout<<a<<"\n";
+		qi_2=b/a;
+		pi = mod((pi_2 - (pi_1 *qi_2)),alw);
+		temp=b;
+		b=a;
+		a=mod(temp,a);
+		pi_2=pi_1;
+		pi_1=pi;
+	}
+	return pi;
 }
 
-void decrypt_this (std::string &txt, int key = 331) //XOR method
-{
-    char encrypt = txt[0];
-    for(int i = 0; encrypt != '\0';encrypt = txt[++i])
-    {
-        int tmp = encrypt/1;
-        txt[i] = tmp^key;
-    }
-    //std::cout << txt<< std::endl;
-    return;
-}
-
-// CIFRADO MONOALFABETICO o ALGORITMO AFIN (EJERCICIO 5) //
-
-void copy_text(std::string a , std::string b )// = "Plain_Text.txt" = "Cypher.txt"
-{
-    std::ifstream input_file( a.c_str() );
-    std::ofstream output_file( b.c_str() );
-    std::string input_content = "";
-
-    int i = 0;
-    for( i; input_file.eof()!=true; i++ )
-    {
-        input_content += input_file.get();
-    }
-    input_file.close();
-
-    //Elimina el caracter de fin de cadena
-    input_content = input_content.substr(0, input_content.length() - 1 );
-
-    output_file << input_content;
-    output_file.close();
-
-    return;
-}
-
-void encrypt_monoaplha_cipher_txt(std::string file ,int Private_key = 21 )
+void encrypt_monoaplha_cipher_txt(std::string file ,int Private_key = 165 )
 {
     //
     std::ifstream input_file( file.c_str() );
@@ -104,7 +69,7 @@ void encrypt_monoaplha_cipher_txt(std::string file ,int Private_key = 21 )
 }
 
 
-void decryption_monoalpha_cipher_txt(std::string file, int Public_key =  61) // default 21, decipher key 61
+void decryption_monoalpha_cipher_txt(std::string file, int Public_key =  45) // default 21, decipher key 61
 {
     //
     std::ifstream input_file( file.c_str() );
@@ -137,27 +102,12 @@ void decryption_monoalpha_cipher_txt(std::string file, int Public_key =  61) // 
 
 int main()
 {
-    /*
-    std::string a = "Prueba texto, num3r05 .... @@ $% ..    espacios";
-
-    std::cout<<a<<std::endl;
-    encrypt_this(a);
-    std::cout<<a<<std::endl;
-    decrypt_this(a);
-    std::cout<<a<<std::endl;
-
-    std::cout << "\nPrueba de cifrado 2, cifrado monoalfabetico o algoritmo afin \n" << std::endl;
-
-    std::cout<<a<<std::endl;
-    encrytion_monoaplhabetic_cipher(a);
-    std::cout<<a<<std::endl;
-    decryption_monoaplhabetic_cipher(a);
-    std::cout<<a<<std::endl;
-    */
-    //copy_text("Plain_Text.txt", "Prueba.txt");
-
-    encrypt_monoaplha_cipher_txt("Plain_Text.txt");
-    decryption_monoalpha_cipher_txt("Cipher.txt");
+    int privat,publi;
+    std::cout<< "Ingrese la clave para el cifrado: " << std::endl;
+    std::cin>>publi;
+    privat=inversa(publi,256);
+    encrypt_monoaplha_cipher_txt("Plain_Text.txt",publi);
+    decryption_monoalpha_cipher_txt("Cipher.txt",privat);
 
     return 0;
 }
