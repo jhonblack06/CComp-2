@@ -23,6 +23,9 @@ string nivel1(int numero)//0-99
 	string d[8]={"veinti","treinta","cuarenta ","cincuenta ","sesenta ","setenta ","ochenta ","noventa "};
 	if (numero<=20){
 		return u[numero];	
+	}else if(numero<30){
+		resultado=resultado+u[numero%det];
+		return resultado;
 	}
 	int det=10;
 	resultado+=d[(numero/det)-2];
