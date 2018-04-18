@@ -18,7 +18,7 @@ void bubbleSort(int arr[], int n)
           }
       }
 }
-void printArray(int arr[], int size)
+void imprimir(int arr[], int size)
 {
     int i;
     for (i=0; i < size; i++){
@@ -28,11 +28,11 @@ void printArray(int arr[], int size)
 }
 int main()
 {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr)/sizeof(arr[0]);
+    int a[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(a)/sizeof(arr[0]);
     
-    bubbleSort(arr, n);
+    bubbleSort(a, n);
     cout << "Lista ordenada: " << endl;
-    printArray(arr, n);
+    imprimir(a, n);
     return 0;
 }
