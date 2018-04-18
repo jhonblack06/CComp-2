@@ -29,7 +29,7 @@ void imprimir(int arr[], int size)
 int main()
 {
     int a[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(a)/sizeof(arr[0]);
+    int n = sizeof(a)/sizeof(a[0]);
     
     bubbleSort(a, n);
     cout << "Lista ordenada: " << endl;
