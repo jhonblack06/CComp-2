@@ -29,19 +29,20 @@ void CocktailSort(int a[], int n)
     }
 }
 
-void printArray(int a[], int n)
+void imprimir(int a[], int n)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++){
         cout << a[i] << " ";
+    }
     cout << endl;
 }
 
 int main()
 {
-    int arr[] = { 5, 1, 4, 2, 8, 0, 2 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-    CocktailSort(arr , n);
+    int a[] = { 5, 1, 4, 2, 8, 0, 2 };
+    int n = sizeof(a) / sizeof(a[0]);
+    CocktailSort(a , n);
     cout << "Lista ordenada: " << endl;
-    printArray(arr , n);
+    imprimir(a , n);
     return 0;
 }
