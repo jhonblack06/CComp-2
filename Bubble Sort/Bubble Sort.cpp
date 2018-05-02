@@ -7,7 +7,21 @@ void cambio(int *xp, int *yp)
     *xp = *yp;
     *yp = temp;
 }
-
+void bubblePuntero(int arr[], int n){
+	int *p1;
+	int *p2 = arr+n;
+	int cont = 0;
+	for(p1 = arr ; p2-p1 > 4 ; p1++ ){
+		for(int *p3 = arr ; p2-(p1+cont) > 4; p3++){
+			if(*p1>*p3){
+				cambio(p1,p3);
+			}
+			cont++;
+		}
+	}
+	
+	return;
+}
 void bubbleSort(int arr[], int n)
 {
    int i, j;
