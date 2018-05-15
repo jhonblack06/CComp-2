@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1526417801 source:e:\jg\c-c++\codes\ccomp 2\puzzle\main.cpp
+	"Puzzle.hpp"
+
+1526423210 e:\jg\c-c++\codes\ccomp 2\puzzle\puzzle.hpp
+	<iostream>
+
