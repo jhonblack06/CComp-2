@@ -1,4 +1,7 @@
 #include <iostream>
+#include <stdlib.h>
+#include <conio.h>
+
 
 //Numbers in order for the game
 int Numbers[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0};
@@ -56,7 +59,7 @@ public:
             return; // Don't change the board
     }
 
-    void MV_LF() // **
+    void MV_LF()
     {
         // Memory addresses of the game board
         int (*mem_range_begin)[4] = board;
@@ -75,6 +78,9 @@ public:
         //Do the movement
         if( ( (pivot - 1) > *mem_range_begin) )
         {
+            if((((pivot - *mem_range_begin)%4) -1) < 0)
+                return;
+
             //do the switch
             int tmp = *pivot;
             *(pivot) = *(pivot-1);
@@ -84,7 +90,7 @@ public:
             return; // Don't change the board
     }
 
-    void MV_DW() // **
+    void MV_DW()
     {
         // Memory addresses of the game board
         int (*mem_range_begin)[4] = board;
@@ -112,7 +118,7 @@ public:
             return; // Don't change the board
     }
 
-    void MV_RT() // **
+    void MV_RT()
     {
         // Memory addresses of the game board
         int (*mem_range_begin)[4] = board;
@@ -131,6 +137,9 @@ public:
         //Do the movement
         if( ((pivot +1) < *mem_range_limit) )
         {
+
+            if((((pivot - *mem_range_begin)%4) +1) > 3)
+                return;
             //do the switch
             int tmp = *pivot;
             *(pivot) = *(pivot+1);
@@ -139,37 +148,42 @@ public:
         else
             return; // Don't change the board
     }
-    void intercambio(int &a,int &b){
-		int aux=a;
-		a=b;
-		b=aux;
-		return;
-	}
+
 //Check if the user input is correct and proceed
     void Check_Input()
     {
-        char var;
-		int mov;
-		var = _getch();
-    	mov=int(var);
-    	
-    	if(mov==119){ //arriba
-    		std::cout << "Se mueve arriba" << std::endl;
-		}
-		else if(mov==115){ //abajo
-			std::cout << "Se mueve abajo" << std::endl;
-		}
-		else if(mov==97){  //izquierda
-			std::cout << "Se mueve izquierda" << std::endl;
-		}
-		else if(mov==100){  //derecha
-			std::cout << "Se mueve derecha" << std::endl;
-		}
-		else{
-			std::cout<<"Ingrese un movimiento valido..."<< std::endl;
-		}
-        //std::system("cls");
-		Print();
+        char input;
+        bool accepted = false;
+        while(accepted == false)
+        {
+            std::cout << "\n --> Waiting for user input... ";
+            //std::cin >> input;
+            input = _getch();
+            switch(input)
+            {
+                case 'w':
+                    MV_UP();
+                    accepted = true;
+                    break;
+                case 'a':
+                    MV_LF();
+                    accepted = true;
+                    break;
+                case 's':
+                    MV_DW();
+                    accepted = true;
+                    break;
+                case 'd':
+                    MV_RT();
+                    accepted = true;
+                    break;
+                default:
+                    std::cout << "\n Wrong Input, please try again ";
+                    break;
+            }
+
+        }
+        system("cls");
         return;
     }
 
@@ -214,7 +228,6 @@ public:
         Print();
         do
         {
-
             Check_Input();
             std::cout << std::endl; // For printing issues
             Print();
@@ -229,7 +242,7 @@ public:
 //Constructor
     P()
     {
-        std::cout << " Movements will change the position of zero(0) and the wished direction";
+        std::cout << " Movements will change the position of zero(0) in the wished direction";
         std::cout << "\n Only use 'w', 'a', 's' and 'd' keys as input \n";
         Fill();
         Play();
