@@ -196,7 +196,7 @@ int main ()
 
     imprimir_tablero(tablero);
     bool continua=true;
-    bool local,visitante,ganador;
+    bool local,visitante,ganador=false;
 	int cont=0;
 	while(continua){
 		if(!(cont%2)){
