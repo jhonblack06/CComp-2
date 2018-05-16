@@ -139,40 +139,37 @@ public:
         else
             return; // Don't change the board
     }
-
+    void intercambio(int &a,int &b){
+		int aux=a;
+		a=b;
+		b=aux;
+		return;
+	}
 //Check if the user input is correct and proceed
     void Check_Input()
     {
-        char input;
-        bool accepted = false;
-        while(accepted == false)
-        {
-            std::cout << "\n --> Waiting for user input... ";
-            std::cin >> input;
-            switch(input)
-            {
-                case 'w':
-                    MV_UP();
-                    accepted = true;
-                    break;
-                case 'a':
-                    MV_LF();
-                    accepted = true;
-                    break;
-                case 's':
-                    MV_DW();
-                    accepted = true;
-                    break;
-                case 'd':
-                    MV_RT();
-                    accepted = true;
-                    break;
-                default:
-                    std::cout << "\n Wrong Input, please try again ";
-                    break;
-            }
-
-        }
+        char var;
+		int mov;
+		var = _getch();
+    	mov=int(var);
+    	
+    	if(mov==119){ //arriba
+    		std::cout << "Se mueve arriba" << std::endl;
+		}
+		else if(mov==115){ //abajo
+			std::cout << "Se mueve abajo" << std::endl;
+		}
+		else if(mov==97){  //izquierda
+			std::cout << "Se mueve izquierda" << std::endl;
+		}
+		else if(mov==100){  //derecha
+			std::cout << "Se mueve derecha" << std::endl;
+		}
+		else{
+			std::cout<<"Ingrese un movimiento valido..."<< std::endl;
+		}
+        //std::system("cls");
+		Print();
         return;
     }
 
