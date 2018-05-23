@@ -1,6 +1,4 @@
 #include <iostream>
-#include <conio.h>
-#include <stdlib.h>
 using namespace std;
 
 void imprimir_tablero(char (*tablero)[3][3],int tam=3)
@@ -11,13 +9,13 @@ void imprimir_tablero(char (*tablero)[3][3],int tam=3)
 		for (char (*b)[3]=*a; b < *a+tam; b++)
 		{
 			for (char *c=*b; c < *b+tam; c++)
-			{
-				cout<<" "<<*c;
+			{		
+				cout<<" "<<*c;	
 			}
 			cout<<"\n";
 		}
-		cout<<"\n";
-	}
+		cout<<"\n";	
+	}		
 }
 
 char *renovar_tablero_derecha(char (*tablero)[3][3],int tam,char *estoy,char &temp,char poner)
@@ -46,7 +44,7 @@ char *renovar_tablero_arriba(char (*tablero)[3][3],int tam,char *estoy,char &tem
 {
 		if(estoy!=*(*(tablero)) and estoy!=*(*(tablero))+1 and estoy!=*(*(tablero))+2  )
 		{
-			*estoy=temp;
+			*estoy=temp;		
 			estoy-=3;
 			temp=*estoy;
 			*estoy=poner;
@@ -95,24 +93,24 @@ bool verificar_filas(char (*tablero)[3][3],int tam,char poner)
 		for (char (*b)[3]=*a; b < *a+tam; b++)
 		{
 			for (char *c=*b; c < *b+tam; c++)
-			{
+			{		
 				if(*c==poner){
 					cont_f++;
-				}
+				}	
 			}
 				if(cont_f==3){
 					//cout<<"aqui";
 					return true;
 				}else{
 					cont_f=0;}
-		}
+		}	
 	}
 	return false;
 }
 bool verificar_columnas(char (*tablero)[3][3],int tam,char poner)
-{
+{	
 	for (char (*a)[3][3]=tablero; a < tablero+tam; a++)
-	{
+	{	
 		for (char *b=**a; b < *(*a+1); b++)
 		{
 			if(*b==poner and *(b+3)==poner and *(b+6)==poner)
@@ -120,7 +118,7 @@ bool verificar_columnas(char (*tablero)[3][3],int tam,char poner)
 				//cout<<"aqui1";
 				return true;
 			}
-		}
+		}	
 	}
 	return false;
 }
@@ -129,13 +127,13 @@ bool verificar_diagonales(char (*tablero)[3][3],int tam,char poner)
 	for (char (*a)[3][3]=tablero; a < tablero+tam; a++)
 	{
 		if(***a==poner and *(*(*a+1)+1)==poner and *(*(*a+2)+2)==poner)
-		{
+		{	
 			//cout<<"aqui2";
 			return true ;
 		}else if(*(**a+2)==poner and *(*(*a+1)+1)==poner and *(*(*a+2))==poner){
 			//cout<<"aqui3";
 			return true ;
-		}
+		}	
 	}
 	return false;
 }
@@ -164,9 +162,9 @@ bool verificar_diagonales_2d(char (*tablero)[3][3],int tam,char poner)
 					return true;
 				}else{
 					patron--;
-				}
+				} 
 	}
-	return false;
+	return false;	
 }
 bool verificar(char (*tablero)[3][3],int tam,char poner)
 {
@@ -182,30 +180,29 @@ int main ()
 	//INICIALIZAR
 	char tablero[3][3][3]={{{'-','-','-'},{'-','-','-'},{'-','-','-'}},{{'-','-','-'},{'-','-','-'},{'-','-','-'}},{{'-','-','-'},{'-','-','-'},{'-','-','-'}}};
     char movimiento;
-
-
+    
+    
     //JUGADOR LOCAL
     char temp_local=tablero[0][0][0];
     tablero[0][0][0]='X';
-    //JUGADOR VISITANTE
+    //JUGADOR VISITANTE 
     char temp_visitante=tablero[2][2][2];
     tablero[2][2][2]='O';
-
-    char *estoy_local=&tablero[0][0][0];
+    
+    char *estoy_local=&tablero[0][0][0]; 
     char *estoy_visitante=&tablero[2][2][2];
-
+     
     imprimir_tablero(tablero);
-    bool continua=true;
-    bool local,visitante,ganador=false;
+    bool continua=true;	
+    bool local,visitante,ganador;
 	int cont=0;
 	while(continua){
 		if(!(cont%2)){
 			local=true;
 			while(local){
-				//movimiento=_getch();
 				cin>>movimiento;
 				if(movimiento=='a'){
-					estoy_local=renovar_tablero_izquierda(tablero,3,estoy_local,temp_local,'X');
+					estoy_local=renovar_tablero_izquierda(tablero,3,estoy_local,temp_local,'X');			
 				}else if(movimiento=='d'){
 					estoy_local=renovar_tablero_derecha(tablero,3,estoy_local,temp_local,'X');
 				}else if(movimiento=='w'){
@@ -225,7 +222,6 @@ int main ()
 					continua=false;
 					local=false;
 				}
-				//system("cls");
 				imprimir_tablero(tablero);
 				if(ganador){
 					cout<<"GANO EL LOCAL , GANO X\n";
@@ -236,10 +232,9 @@ int main ()
 		}else{
 			visitante=true;
 			while(visitante){
-				//movimiento= _getch();
 				cin>>movimiento;
 				if(movimiento=='a'){
-					estoy_visitante=renovar_tablero_izquierda(tablero,3,estoy_visitante,temp_visitante,'O');
+					estoy_visitante=renovar_tablero_izquierda(tablero,3,estoy_visitante,temp_visitante,'O');			
 				}else if(movimiento=='d'){
 					estoy_visitante=renovar_tablero_derecha(tablero,3,estoy_visitante,temp_visitante,'O');
 				}else if(movimiento=='w'){
@@ -259,7 +254,6 @@ int main ()
 					continua=false;
 					visitante=false;
 				}
-				//system("cls");
 				imprimir_tablero(tablero);
 				if(ganador){
 					cout<<"GANO EL VISITANTE , GANO O\n";
@@ -267,9 +261,9 @@ int main ()
 					visitante=false;
 				}
 			}
-		}
+		}	
 		cont++;
 	}
-
+	
 	return 0;
 }
