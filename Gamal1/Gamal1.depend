@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1479693901 source:d:\archivos gonzalo\discretas 3 nuevo\gamal1\main.cpp
+	<iostream>
+	"CGamal.h"
+
+1479694252 d:\archivos gonzalo\discretas 3 nuevo\gamal1\include\cgamal.h
+	<iostream>
+	"CGamal.h"
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
+1479693814 source:d:\archivos gonzalo\discretas 3 nuevo\gamal1\src\cgamal.cpp
+	"CGamal.h"
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
+1480307824 source:f:\discretas 3 nuevo\gamal1\src\cgamal.cpp
+	"CGamal.h"
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
+1496902376 f:\discretas 3 nuevo\gamal1\include\cgamal.h
+	<iostream>
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
+1480307824 source:c:\discretas 3 nuevo\gamal1\src\cgamal.cpp
+	"CGamal.h"
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
+1496902376 c:\discretas 3 nuevo\gamal1\include\cgamal.h
+	<iostream>
+	<string>
+	<iostream>
+	<windows.h>
+	<sstream>
+	<fstream>
+	<time.h>
+	<bitset>
+	<vector>
+	<stdlib.h>
+	<math.h>
+	<NTL/ZZ.h>
+
