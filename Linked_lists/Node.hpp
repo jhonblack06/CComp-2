@@ -9,7 +9,6 @@ public:
     T value = NULL;
     Node *next = NULL, *previous = NULL;
 public:
-
     void SetPrev(int* previous)              //Receives a memory address to the previous node
     {
         this -> previous = previous;

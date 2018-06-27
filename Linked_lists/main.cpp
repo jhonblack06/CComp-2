@@ -55,30 +55,14 @@ class FR
 // MAIN
 int main()
 {
-
-    LinearList<int> Empty_01;
-	LinearList<int> Empty_02;
-    LinearList<int> lista;
-	for(int i=0;i<=12;i++){
+    CircularList<int> lista;
+    int tam = 14;
+	for(int i=0;i<=tam;i++){
 		lista.CreateNode(i);
 	}
-	lista.PrintList();
+	//lista.PrintList();
+	lista.josephus(tam,8);
 	std::cout << "\n Fin de Lista\n";
-	//ParityLists(lista,Empty_01,Empty_02,IsOdd);
-	//(*Function<int>)(lista,Empty_01,Empty_02,IsEven);
-	FR<int> CLASS;
-	CLASS(lista,Empty_01,Empty_02,IsEven);
-
-	Empty_01.PrintList();
-	std::cout << "\n Fin de Lista\n";
-	Empty_02.PrintList();
-	std::cout << "\n Fin de Lista\n";
-
-
-/*
-	CircularList<int> c(12);
-    c.PrintList();
-*/
 
 	return 0;
 }

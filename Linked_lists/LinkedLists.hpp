@@ -246,7 +246,7 @@ public:
 	}
 	void RemoveAll()
 	{
-	   Node<T> * tmp = new Node<T>;
+	    Node<T> * tmp = new Node<T>;
         tmp = head;
         pointer = head->next;
         while(pointer->next != head)
@@ -267,9 +267,32 @@ public:
             pointer = pointer->next;
         }
         std::cout << "Value: " << pointer->value << " Address: " << pointer << std::endl;
+        std::cout << std::endl << std::endl;
         return;
 	}
-	void josephus(T,T);
+	void josephus(int num,int salto){
+	    for(int i=1;i<=num;i++){
+            CreateNode(i);
+        }
+        PrintList();
+        //Variables Auxiliares
+        Node<T>* pointer = new Node<T>;
+        Node<T>* Prev = new Node<T>;
+        Prev = head;
+        pointer = head;
+        while(head->next->next!=head){
+            for(int i=1;i<salto;i++){
+                Prev=pointer;
+                pointer=pointer->next;
+            }
+            if(pointer==head){head=head->next;}
+            Prev->next = pointer->next;
+            pointer = pointer->next;
+            PrintList();
+        }
+        std::cout<<"Quedan:"<<'\t';
+        PrintList();
+    }
 
 	CircularList()
 	{
