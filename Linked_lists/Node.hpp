@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+#include <cctype>
 
 template <typename T = int>
 class Node           //Basic element in dynamic lists
@@ -9,6 +9,7 @@ public:
     T value = NULL;
     Node *next = NULL, *previous = NULL;
 public:
+
     void SetPrev(int* previous)              //Receives a memory address to the previous node
     {
         this -> previous = previous;

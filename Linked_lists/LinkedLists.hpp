@@ -246,7 +246,7 @@ public:
 	}
 	void RemoveAll()
 	{
-	    Node<T> * tmp = new Node<T>;
+	   Node<T> * tmp = new Node<T>;
         tmp = head;
         pointer = head->next;
         while(pointer->next != head)
@@ -267,32 +267,9 @@ public:
             pointer = pointer->next;
         }
         std::cout << "Value: " << pointer->value << " Address: " << pointer << std::endl;
-        std::cout << std::endl << std::endl;
         return;
 	}
-	void josephus(int num,int salto){
-	    for(int i=1;i<=num;i++){
-            CreateNode(i);
-        }
-        PrintList();
-        //Variables Auxiliares
-        Node<T>* pointer = new Node<T>;
-        Node<T>* Prev = new Node<T>;
-        Prev = head;
-        pointer = head;
-        while(head->next->next!=head){
-            for(int i=1;i<salto;i++){
-                Prev=pointer;
-                pointer=pointer->next;
-            }
-            if(pointer==head){head=head->next;}
-            Prev->next = pointer->next;
-            pointer = pointer->next;
-            PrintList();
-        }
-        std::cout<<"Quedan:"<<'\t';
-        PrintList();
-    }
+	void josephus(T,T);
 
 	CircularList()
 	{
@@ -310,3 +287,108 @@ public:
         RemoveAll();
     }
 };
+
+template <typename T>
+
+void Merge(LinearList<T> &a, LinearList<T> b)
+{
+    Node<T>* aux = a.First;
+    b.pointer = b.First;
+    a.pointer = a.First;
+    while(a.pointer!=NULL){
+        b.pointer = b.First;
+        while(b.pointer!=NULL)
+        {
+            if(a.First->value > b.First->value)
+            {
+                aux = b.First;
+                b.First = a.First;
+                a.First = aux;
+                a.First->next = b.First;
+            }
+            else if(a.pointer->value > b.pointer->value)
+            {
+                aux = b.pointer;
+                b.pointer = a.pointer;
+                a.pointer = aux;
+                a.pointer->next = b.pointer;
+            }
+
+            b.pointer = b.pointer->next;
+        }
+        b.First = b.First->next;
+        a.pointer = a.pointer->next;
+    }
+    a.PrintList();
+    return;
+}
+
+void Merge2(LinearList<T> &a, LinearList<T> b)
+{
+    //Node<T>* aux = a.First;
+    Node<T>* aux1 = NULL;
+    Node<T>* aux2 = NULL;
+    Node<T>* aux3 = NULL;
+    b.pointer = b.First;
+    a.pointer = a.First;
+    int v=1;
+        if(a.First->value < b.First->value){
+            aux2=a.First;
+            aux3=b.First;
+            while(a.pointer!=NULL){
+                while(a.pointer->value < b.pointer->value && v){
+                    if(a.pointer->next->value < b.pointer->value ){
+                        a.pointer=a.pointer->next;
+                    }else{
+                        v=0;
+                    }
+                    //aux2=a.pointer;
+                    //a.pointer=a.pointer->next;
+                }
+                if(a.pointer->value < b.pointer->value){
+
+                    aux3=b.pointer;
+
+                    aux1=a.pointer->next;
+                    a.pointer->next=aux3;
+                    aux3->next=aux1;
+                    }
+                b.pointer=b.pointer->next;
+            }
+        }else{
+            while(b.pointer!=NULL){
+                if(b.pointer->value < a.pointer->value){
+
+
+                    }
+                }
+            b.pointer=b.pointer->next;
+        }
+        /*b.pointer = b.First;
+        while(b.pointer!=NULL)
+        {
+            if(a.First->value > b.First->value)
+            {
+                aux = b.First;
+                b.First = a.First;
+                a.First = aux;
+                a.First->next = b.First;
+            }
+            else if(a.pointer->value > b.pointer->value)
+            {
+                aux = b.pointer;
+                b.pointer = a.pointer;
+                a.pointer = aux;
+                a.pointer->next = b.pointer;
+            }
+
+            b.pointer = b.pointer->next;
+        }
+        b.First = b.First->next;
+        a.pointer = a.pointer->next;*/
+    }
+    a.PrintList();
+    return;
+}
+
+
