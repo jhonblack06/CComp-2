@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1530310473 source:d:\ccomp2\vccomp\main.cpp
+	"LinkedLists.hpp"
+
+1530312193 d:\ccomp2\vccomp\linkedlists.hpp
+	<iostream>
+	"Node.hpp"
+
+1530296448 d:\ccomp2\vccomp\node.hpp
+	<iostream>
+	<string>
+	<cctype>
+
